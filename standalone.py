@@ -1,15 +1,6 @@
-#!/usr/bin/env python3
 """
 Standalone Evaluation Script for Semiconductor Image Restoration
-Location: C:\\Users\\MOKSH\\OneDrive\\Desktop\\ai image enhancer\\eval.py
 
-Accepts:
-  - (a) Path to test images directory (--input_dir / -i)
-  - (b) Path to output directory (--output_dir / -o)
-  - (c) Optional path to weights checkpoint (--weights / -w)
-
-Usage:
-  python eval.py --input_dir /path/to/test_images --output_dir /path/to/restored_output
 """
 
 import os
