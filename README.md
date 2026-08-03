@@ -10,12 +10,19 @@ An end-to-end deep learning pipeline for restoring degraded microscopic and high
 - **`best_model.pth`**: Trained model weights checkpoint (`~32 MB`).
 - **`notebook.ipynb`**: Complete Google Colab / Jupyter notebook for model training and dataset preparation.
 - **`requirements.txt`**: List of required Python packages (`torch`, `opencv-python`, `scikit-image`, `numpy`, etc.).
-- **`Restored Test Outputs/`**: Directory containing sample outputs generated from model evaluation.
+- **`Restored Test Outputs/`**: Directory containing sample outputs of the given test images.
 ---
 
-## Quick Start
+## Setup Guide
 
-### 1. Environment Setup & Dependencies
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/MOKSH1471/Ai-Image-Enhancer.git
+cd Ai-Image-Enhancer
+```
+
+### 2. Environment Setup & Dependencies
 
 ```bash
 # Create and activate virtual environment
@@ -26,7 +33,7 @@ pip install -r requirements.txt
 pip install -r requirements.txt
 ```
 
-### 2. Run Image Restoration
+### 3. Run Image Restoration
 Run the standalone evaluation script to restore degraded images:
 
 ```bash
