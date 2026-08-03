@@ -256,6 +256,8 @@ def remap_checkpoint_keys(state_dict: dict) -> dict:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def run_evaluation(input_dir: str, output_dir: str, weights_path: str = None):
+    input_dir = input_dir.strip().strip('"\'')
+    output_dir = output_dir.strip().strip('"\'')
     os.makedirs(output_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[EVAL] Running evaluation on device: {device}")
@@ -359,9 +361,17 @@ def run_evaluation(input_dir: str, output_dir: str, weights_path: str = None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Standalone Evaluation Script for AI Image Restoration")
-    parser.add_argument("--input_dir", "-i", type=str, required=True, help="Path to test images directory")
-    parser.add_argument("--output_dir", "-o", type=str, required=True, help="Path to output directory")
+    parser.add_argument("--input_dir", "-i", type=str, default=None, help="Path to test images directory")
+    parser.add_argument("--output_dir", "-o", type=str, default=None, help="Path to output directory")
     parser.add_argument("--weights", "-w", type=str, default=None, help="Optional path to trained model weights checkpoint")
     args = parser.parse_args()
 
-    run_evaluation(args.input_dir, args.output_dir, args.weights)
+    input_dir = args.input_dir
+    output_dir = args.output_dir
+
+    if not input_dir:
+        input_dir = input("Enter the location of the INPUT folder: ").strip().strip('"\'')
+    if not output_dir:
+        output_dir = input("Enter the location of the OUTPUT folder: ").strip().strip('"\'')
+
+    run_evaluation(input_dir, output_dir, args.weights)
