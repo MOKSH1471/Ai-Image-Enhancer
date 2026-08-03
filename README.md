@@ -47,6 +47,6 @@ Step 2 :- Enter Input File or Directory Path: <Path of input folder>
 
 ## Training
 To train or fine-tune the model from scratch:
-1. Open `training_script.ipynb` in [Google Colab](https://colab.research.google.com/) or a local Jupyter environment.
+1. Open `notebook.ipynb` in [Google Colab](https://colab.research.google.com/) or a local Jupyter environment.
 2. Select a GPU runtime.
 3. Run all cells sequentially to train the model and save checkpoints.
