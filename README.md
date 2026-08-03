@@ -1,4 +1,4 @@
-# AI Image Enhancer (Semiconductor Image Restoration)
+# AI Image Enhancer
 
 An end-to-end deep learning pipeline for restoring degraded microscopic and high-resolution zoomed images. Powered by a custom **NAFNet** (Non-linear Activation Free Network) architecture, it performs $2\times$ super-resolution and enhancement, upscaling low-resolution inputs ($128 \times 128$) to high-quality outputs ($256 \times 256$).
 
