@@ -26,11 +26,13 @@ cd Ai-Image-Enhancer
 
 ```bash
 # Create and activate virtual environment
-pip install -r requirements.txt
+python -m venv venv
 # activate On Windows:
 .\venv\Scripts\activate
 ```
+
 ```bash
+# Install the Dependencies
 pip install -r requirements.txt
 ```
 
