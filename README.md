@@ -6,7 +6,7 @@ An end-to-end deep learning pipeline for restoring degraded microscopic and high
 
 ## Repository Contents
 
-- **`standalone.py`**: Self-contained Python script for running model inference/evaluation on test images.
+- **`run.py`**: Self-contained Python script for running model inference/evaluation on test images.
 - **`best_model.pth`**: Trained model weights checkpoint (`~32 MB`).
 - **`notebook.ipynb`**: Complete Google Colab / Jupyter notebook for model training and dataset preparation.
 - **`requirements.txt`**: List of required Python packages (`torch`, `opencv-python`, `scikit-image`, `numpy`, etc.).
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 Run the standalone evaluation script to restore degraded images:
 
 ```bash
-Step 1 :- Run the standalone.py
+Step 1 :- Run the run.py in the terminal
 Step 2 :- Enter Input File or Directory Path: <Path of input folder>
           Enter Output Directory Path: <Path of output folder>
 ```

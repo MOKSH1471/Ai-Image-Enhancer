@@ -1,7 +1,19 @@
 # Python bytecode & cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Virtual Environments
 venv/
 .venv/
+env/
+ENV/
+
+# Jupyter Notebook & IDEs
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Log files
+*.log
