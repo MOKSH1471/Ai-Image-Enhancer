@@ -7,7 +7,6 @@ import os
 import sys
 import glob
 import time
-import json
 import argparse
 import cv2
 import torch
@@ -305,14 +304,13 @@ def run_evaluation(input_dir: str, output_dir: str, weights_path: str = None):
         sys.exit(1)
 
     print(f"[EVAL] Processing {len(input_files)} degraded test samples...")
-    results = []
     total_time = 0.0
 
     with torch.no_grad():
         for file_path in input_files:
             filename = os.path.basename(file_path)
-            png_filename = filename.rsplit('.', 1)[0] + ".png"
-            output_file_path = os.path.join(output_dir, png_filename)
+            npy_filename = filename.rsplit('.', 1)[0] + ".npy"
+            output_file_path = os.path.join(output_dir, npy_filename)
 
             inp_tensor = load_image_as_tensor(file_path).to(device)
 
@@ -325,29 +323,10 @@ def run_evaluation(input_dir: str, output_dir: str, weights_path: str = None):
 
             restored_np = tensor_to_uint8(out_tensor)
             final_np = balanced_post_process(restored_np)
-            cv2.imwrite(output_file_path, final_np)
-
-            results.append({
-                "file": filename,
-                "input_path": file_path,
-                "output_path": output_file_path,
-                "inference_time_ms": round(infer_ms, 2)
-            })
+            np.save(output_file_path, final_np)
 
     avg_time_ms = total_time / len(input_files)
-    summary = {
-        "total_images": len(input_files),
-        "avg_inference_time_ms": round(avg_time_ms, 2),
-        "device": str(device),
-        "results": results
-    }
-
-    summary_file = os.path.join(output_dir, "evaluation_summary.json")
-    with open(summary_file, "w") as f:
-        json.dump(summary, f, indent=2)
-
     print(f"[EVAL COMPLETE] Processed {len(input_files)} images in {round(total_time/1000.0, 2)}s (Avg: {round(avg_time_ms, 2)} ms/image)")
-    print(f"[EVAL COMPLETE] Summary report written to: {summary_file}")
 
 
 if __name__ == "__main__":
